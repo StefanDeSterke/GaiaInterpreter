@@ -3,10 +3,12 @@
 
 import pandas as pd
 
-# Read the CSV file as a Pandas DataFrame:
-df = pd.read_csv('gaia-1 small.csv', header=0, sep=r'\s*,\s*', engine='python')  # Header: 0 lines; comma-separated (allow spaces)
+# Read the CSV files as a Pandas DataFrame:
+df1 = pd.read_csv('.\\util\\gaia-1 filtered.csv', header=0, sep=r'\s*,\s*', engine='python')  # Header: 0 lines; comma-separated (allow spaces)
 
-print(df)  # Print the Pandas DataFrame (2D array) to screen
+df2 = pd.read_csv('.\\util\\gaia-2 filtered.csv', header=0, sep=r'\s*,\s*', engine='python')  # Header: 0 lines; comma-separated (allow spaces)
+
+df = pd.concat([df1, df2])
 
 # Plot:
 
@@ -20,7 +22,7 @@ fig = plt.figure(figsize=(19.2,10.8))       # Set png size to 1920x1080; savefig
 ax1 = fig.add_subplot(111)                  # Create an axes object for the current figure
 
 # Plot a HRD from the data:
-ax1.plot(df.teff_gspphot,df.lum_flame, '.')  # '.': plot dots instead of a line
+ax1.plot(df.teff_gspphot,df.lum_flame, '.', markersize=2)  # '.': plot dots instead of a line
 ax1.legend()
 
 # Plot the inverse of the x-axis
@@ -48,6 +50,6 @@ ax1.grid(True)                            # Plot a grid
 fig.tight_layout()                        # Use narrow margins
 
 plt.show()                                # Show the plot to screen
-fig.savefig('gaia-1.png')                 # Save the plot as png (use pdf for better quality)
+fig.savefig('gaia combined.png')                 # Save the plot as png (use pdf for better quality)
 plt.close()                               # Close the plot in order to start a new one later
 
