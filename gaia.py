@@ -4,9 +4,9 @@
 import pandas as pd
 
 # Read the CSV files as a Pandas DataFrame:
-df1 = pd.read_csv('.\\util\\gaia-1 filtered.csv', header=0, sep=r'\s*,\s*', engine='python')  # Header: 0 lines; comma-separated (allow spaces)
+df1 = pd.read_csv('gaia_data/filtered_data/gaia-1 filtered.csv', header=0, sep=r'\s*,\s*', engine='python')  # Header: 0 lines; comma-separated (allow spaces)
 
-df2 = pd.read_csv('.\\util\\gaia-2 filtered.csv', header=0, sep=r'\s*,\s*', engine='python')  # Header: 0 lines; comma-separated (allow spaces)
+df2 = pd.read_csv('gaia_data/filtered_data/gaia-2 filtered.csv', header=0, sep=r'\s*,\s*', engine='python')  # Header: 0 lines; comma-separated (allow spaces)
 
 df = pd.concat([df1, df2])
 
