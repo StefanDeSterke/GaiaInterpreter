@@ -2,3 +2,6 @@
 .idea/shelf/
 .idea/workspace.xml
 *.csv
+*.csv.gz
+*.png
+*.pdf
