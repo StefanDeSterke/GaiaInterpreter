@@ -1,4 +1,5 @@
 from astroquery.gaia import Gaia
+import pandas as pd
 import time
 
 QUERY = ("SELECT gaiadr3.astrophysical_parameters.teff_gspphot,gaiadr3.astrophysical_parameters.lum_flame "
@@ -15,7 +16,7 @@ def sync_retrieve_astrophysical_parameters():
 
 
 def async_retrieve_astrophysical_parameters():
-    job = Gaia.launch_job_async(QUERY)
+    job = Gaia.launch_job_async(QUERY, background=True)
 
     print(job)
 
@@ -26,3 +27,11 @@ def async_retrieve_astrophysical_parameters():
     print("Job complete!")
 
     return job.get_results().to_pandas()
+
+
+def local_retrieve_astrophysical_parameters():
+    df1 = pd.read_csv('../gaia_data/filtered_data/gaia-1 filtered.csv', header=0, sep=r'\s*,\s*', engine='python')  # Header: 0 lines; comma-separated (allow spaces)
+    df2 = pd.read_csv('../gaia_data/filtered_data/gaia-2 filtered.csv', header=0, sep=r'\s*,\s*', engine='python')  # Header: 0 lines; comma-separated (allow spaces)
+
+    return pd.concat([df1, df2])
+
