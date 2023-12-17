@@ -8,7 +8,7 @@ from astroquery.gaia import Gaia
 # df = gaia_retriever.local_retrieve_astrophysical_parameters()
 
 Gaia.ROW_LIMIT = -1
-Gaia.login(user="skamphui", password="j6RsU4JH_!#aQ9t")
+Gaia.login(user=config.user, password=config.password)
 
 df = gaia_retriever.async_retrieve_astrophysical_parameters()
 
